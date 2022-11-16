@@ -1,0 +1,35 @@
+name: CI and CD
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/**
+      - build.sbt
+      - .scalafix.conf
+      - .scalafmt.conf
+      - project/*
+      - .github/**
+  pull_request:
+    paths:
+      - src/**
+      - build.sbt
+      - .scalafix.conf
+      - .scalafmt.conf
+      - project/*
+      - .github/**
+jobs:
+  ci:
+    uses: Lucky3028/shared-workflows/.github/workflows/scala-ci.yml@main
+    with:
+      cache-build-deps-ver: v-1
+      cache-build-outputs-ver: v-1
+  cd:
+    uses: Lucky3028/shared-workflows/.github/workflows/scala-cd.yml@main
+    if: github.ref == 'refs/heads/main'
+    needs:
+      - ci
+    with:
+      cache-build-deps-ver: v-1
+      cache-build-outputs-ver: v-1
+      jar-output-dir: scala-2.13
