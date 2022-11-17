@@ -1,4 +1,4 @@
-package click.seichi.observerutils
+package click.seichi.observerutils.app
 
 import org.bukkit.plugin.java.JavaPlugin
 

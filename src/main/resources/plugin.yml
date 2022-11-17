@@ -1,6 +1,6 @@
 name: ObserverUtils
 version: '${version}'
-main: click.seichi.observerutils.ObserverUtils
+main: click.seichi.observerutils.app.ObserverUtils
 depend:
   - WorldEdit
   - WorldGuard
