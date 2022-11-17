@@ -3,12 +3,18 @@ import ResourceFilter.filterResources
 // region Dependencies
 
 resolvers ++= Seq(
-  "SpigotMC" at "https://maven.elmakers.com/repository/",
-  "Sonatype OSS" at "https://s01.oss.sonatype.org/content/groups/public/"
+  "maven.elmakers.com" at "https://maven.elmakers.com/repository/", // spigot
+  "Sonatype OSS" at "https://s01.oss.sonatype.org/content/groups/public/",
+  "EngineHub" at "https://maven.enginehub.org/repo/"
 )
 
 val providedDependencies =
-  Seq("org.spigotmc" % "spigot-api" % "1.12.2-R0.1-SNAPSHOT").map(_ % "provided")
+  Seq(
+    "org.spigotmc" % "spigot-api" % "1.12.2-R0.1-SNAPSHOT",
+    "com.sk89q.worldguard" % "worldguard-legacy" % "6.2",
+    // WorldGuardがWordEditを要求するので
+    "com.sk89q.worldedit" % "worldedit-bukkit" % "6.1"
+  ).map(_ % "provided")
 val testDependencies =
   Seq("org.scalamock" %% "scalamock" % "5.2.0", "org.scalatest" %% "scalatest" % "3.2.14")
     .map(_ % "test")
