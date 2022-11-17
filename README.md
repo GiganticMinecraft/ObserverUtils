@@ -95,11 +95,7 @@
 
 ### コーディング規約
 
-Kotlin公式コーディング規約[^5]に従う。
-
-#### Nullable
-
-使用してもよいが、`Result`を使用するなどして必要最小限に抑えること。`!!`演算子の使用も必要最小限で。
+Scala公式コーディング規約[^5]及び`sbt scalafmtALL`、`sbt scalafixAll`の実行結果に従う。
 
 ### コミット
 
@@ -121,9 +117,9 @@ Kotlin公式コーディング規約[^5]に従う。
 ### 開発を行う上で必要な依存
 
 * Java 1.8
-* Kotlin 1.6.21
+* Scala 2.13.10
 * [サーバー上で作動させる上で必要な依存](#サーバー上で作動させる上で必要な依存)に記述されているもの
-* その他、[build.gradle](./build.gradle)に記述されているもの
+* その他、[build.sbt](./build.sbt)に記述されているもの
 
 # ライセンス
 
@@ -133,5 +129,5 @@ Kotlin公式コーディング規約[^5]に従う。
 [^2]: https://redmine.seichi.click/projects/public/wiki/Supporter_Guide
 [^3]: https://redmine.seichi.click/projects/public/wiki/Supporter_Guide#1%E7%AB%A0Observer%E6%A8%A9%E9%99%90
 [^4]: https://redmine.seichi.click
-[^5]: https://kotlinlang.org/docs/coding-conventions.html
+[^5]: https://docs.scala-lang.org/style/
 [^6]: https://www.conventionalcommits.org/ja/v1.0.0/
