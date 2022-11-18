@@ -8,6 +8,8 @@ resolvers ++= Seq(
   "EngineHub" at "https://maven.enginehub.org/repo/"
 )
 
+val embeddedDependencies = Seq("com.beachape" %% "enumeratum" % "1.7.0")
+
 val providedDependencies =
   Seq(
     "org.spigotmc" % "spigot-api" % "1.12.2-R0.1-SNAPSHOT",
@@ -15,11 +17,12 @@ val providedDependencies =
     // WorldGuardがWordEditを要求するので
     "com.sk89q.worldedit" % "worldedit-bukkit" % "6.1"
   ).map(_ % "provided")
+
 val testDependencies =
   Seq("org.scalamock" %% "scalamock" % "5.2.0", "org.scalatest" %% "scalatest" % "3.2.14")
     .map(_ % "test")
 
-libraryDependencies ++= providedDependencies ++ testDependencies
+libraryDependencies ++= providedDependencies ++ testDependencies ++ embeddedDependencies
 
 excludeDependencies ++= Seq(ExclusionRule(organization = "org.bukkit", name = "bukkit"))
 
