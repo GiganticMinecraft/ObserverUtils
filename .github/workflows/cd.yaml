@@ -26,7 +26,7 @@ jobs:
         uses: hudsonm62/short-sha@b5ee0a4109da599fea68b00dcfe5812100ad8d42 # v1.1.0
         id: short-sha
       - name: Download artifacts
-        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+        uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
       - name: Create and push a tag
         id: tag-name
         run: |
