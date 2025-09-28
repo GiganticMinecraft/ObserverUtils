@@ -1,5 +1,5 @@
 {
-  "extends": ["github>Lucky3028/renovate"],
+  "extends": ["github>GiganticMinecraft/renovate-config"],
   "ignoreDeps": [
     "org.spigotmc:spigot-api",
     "com.sk89q.worldguard:worldguard-bukkit",
