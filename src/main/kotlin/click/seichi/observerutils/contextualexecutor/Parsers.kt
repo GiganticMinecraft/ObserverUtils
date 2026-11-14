@@ -5,7 +5,7 @@ import com.github.michaelbull.result.*
 
 object Parsers {
     fun listedInt(list: List<Int>, failureMessage: String): SingleArgumentParser = { str ->
-        str.split(",").mapResult { parsedList ->
+        str.split(",").tryMap { parsedList ->
             parsedList.toIntOrNull()?.takeIf { list.contains(it) }
                 .toResultOr { CommandBuildException.FailedToParseArg(failureMessage) }
         }

@@ -2,6 +2,8 @@ package click.seichi.observerutils.contextualexecutor
 
 import click.seichi.observerutils.CommandBuildException
 import click.seichi.observerutils.contextualexecutor.Parsers.listedInt
+import com.github.michaelbull.result.getErrorOrElse
+import com.github.michaelbull.result.getOrElse
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.booleans.shouldBeTrue
@@ -19,7 +21,8 @@ class ParsersTest : BehaviorSpec({
                 val actual = listedInt(base, failureMessage)("")
 
                 actual.isErr.shouldBeTrue()
-                actual.error.shouldBeInstanceOf<CommandBuildException>()
+                actual.getErrorOrElse { error("Expected an error result") }
+                    .shouldBeInstanceOf<CommandBuildException>()
             }
         }
         When("splitできない文字列が含まれているならば") {
@@ -29,7 +32,8 @@ class ParsersTest : BehaviorSpec({
                         val actual = listedInt(base, failureMessage)(it)
 
                         actual.isErr.shouldBeTrue()
-                        actual.error.shouldBeInstanceOf<CommandBuildException>()
+                        actual.getErrorOrElse { error("Expected an error result") }
+                            .shouldBeInstanceOf<CommandBuildException>()
                     }
             }
         }
@@ -40,7 +44,8 @@ class ParsersTest : BehaviorSpec({
                         val actual = listedInt(base, failureMessage)(it)
 
                         actual.isErr.shouldBeTrue()
-                        actual.error.shouldBeInstanceOf<CommandBuildException>()
+                        actual.getErrorOrElse { error("Expected an error result") }
+                            .shouldBeInstanceOf<CommandBuildException>()
                     }
             }
         }
@@ -50,7 +55,8 @@ class ParsersTest : BehaviorSpec({
                     val actual = listedInt(base, failureMessage)(base.joinToString(","))
 
                     actual.isOk.shouldBeTrue()
-                    actual.value.shouldBeInstanceOf<List<String>>()
+                    actual.getOrElse { error("Expected a successful result") }
+                        .shouldBeInstanceOf<List<String>>()
                 }
             }
             this@Given.When("基準に含まれていないIntが含まれているならば") {
@@ -61,7 +67,8 @@ class ParsersTest : BehaviorSpec({
                         val actual = listedInt(base, failureMessage)(it)
 
                         actual.isErr.shouldBeTrue()
-                        actual.error.shouldBeInstanceOf<CommandBuildException>()
+                        actual.getErrorOrElse { error("Expected an error result") }
+                            .shouldBeInstanceOf<CommandBuildException>()
                     }
                 }
             }

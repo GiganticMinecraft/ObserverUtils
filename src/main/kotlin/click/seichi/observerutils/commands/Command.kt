@@ -168,7 +168,7 @@ object Commands {
                     .let { WorldGuard.findRegionByName(sender.world, it) }
                     .map { it.maximumPoint!! }
                     .map { ExternalPlugin.WorldEdit.from(sender.world, it).apply { y = 64.0 } }
-                    .onSuccess { sender.teleport(it) }
+                    .onOk { sender.teleport(it) }
                     .map {
                         Effect.MessageEffect(
                             "${ChatColor.AQUA}保護が見つかったためテレポートしました。",
