@@ -45,7 +45,7 @@ class ParsersTest : BehaviorSpec({
             }
         }
         When("splitもできるしIntのみの文字列であって") {
-            When("基準に含まれているIntならば") {
+            this@Given.When("基準に含まれているIntならば") {
                 Then("Ok") {
                     val actual = listedInt(base, failureMessage)(base.joinToString(","))
 
@@ -53,7 +53,7 @@ class ParsersTest : BehaviorSpec({
                     actual.value.shouldBeInstanceOf<List<String>>()
                 }
             }
-            When("基準に含まれていないIntが含まれているならば") {
+            this@Given.When("基準に含まれていないIntが含まれているならば") {
                 Then("Error") {
                     (1..5).map {
                         (1..10).map { Random.nextInt() }.filterNot { base.contains(it) }.joinToString(",")
