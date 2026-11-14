@@ -1,6 +1,7 @@
 {
   "extends": ["github>GiganticMinecraft/renovate-config"],
   "ignoreDeps": [
+    "java-jdk",
     "org.spigotmc:spigot-api",
     "com.sk89q.worldguard:worldguard-bukkit",
     "com.sk89q.worldedit:worldedit-core",
